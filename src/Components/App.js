@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TaskList from "./TaskList";
-import { Wrapper, Title, TaskName, Button } from "../style.js";
+import { Wrapper, Form, Label, TaskName, Button } from "../style.js";
 
 class App extends Component {
   state = { tasks: [], text: "" };
@@ -33,15 +33,16 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>TODO</Title>
-        <form onSubmit={this.handleSubmit}>
+        
+        <Form onSubmit={this.handleSubmit}>
+          <Label>TODO</Label>
           <TaskName
             onChange={this.handleChange}
             value={this.state.text}
             autoFocus
           />
           <Button className="add">+</Button>
-        </form>
+        </Form>
         <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} />
       </Wrapper>
     );

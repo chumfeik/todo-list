@@ -13,78 +13,84 @@ injectGlobal`
   }
 `;
 export const Wrapper = styled.div`
+  max-width: 25rem;
   margin: 1em auto;
   padding: 1em;
-  max-width: 25rem;
   background: #fff;
+  border-radius: 1em;
   box-shadow: 0 0 1rem #aaa;
   @media (max-width: 599px) {
     min-width: 100%;
     margin-top: 0;
+    margin: 0;
+    border-radius: 0;
   }
 `;
 
-export const Title = styled.h1`
+export const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-auto-rows: 3em;
+  @media (max-width: 599px) {
+    grid-template-rows: 0 3em;
+  }
+`;
+
+export const Label = styled.label`
+  display: block;
+  grid-column-start: 2;
+  font-size: 2em;
   text-align: center;
   @media (max-width: 599px) {
     font-size: 0;
-    margin: 0;
   }
 `;
 
 export const TaskName = styled.input`
-  display: inline-block;
-  height: 1em;
-  max-width: 85%;
-  margin: 4%;
-  padding: 0.1em;
-  font-size: 2em;
+  grid-column: 2 / -2;
+  grid-row-start: 2;
+  margin-right: 10px;
+  padding: 0 1em;
+  border: 1px solid black;
+  border-radius: 1em;
+  :focus {
+    outline: none;
+  }
   @media (max-width: 599px) {
-    margin: 0;
-    min-width: 100%;
+    grid-column-start: 1;
+    margin-left: 2em;
   }
 `;
 
-export const Task = styled.li`
-  padding-right: 1em;
-  font-size: 2em;
-  word-wrap: break-word;
-  border-bottom: 0.1em solid #aaa;
-  &:last-child {
-    border: none;
-  }
-  @media (max-width: 599px) {
-    border: none;
-  }
-`;
 export const Button = styled.button`
-  padding: 0.3em;
-  cursor: pointer;
-  border: none;
-  color: #aaa;
+  grid-column: -2 / -1;
+  grid-row-start: 2;
   background-color: #fff;
-  font-size: 1em;
-  font-weight: bold;
-  outline: none;
-  &.add {
-    padding: 0;
-    font-size: 2em;
-    &:hover {
-      color: #0f9;
-    }
-    @media (max-width: 599px) {
-      display: block;
-      margin: 0.5em auto -0.5em;
-    }
+  font-size: 2em;
+  border: none;
+  :focus {
+    outline: none;
   }
-  &.delete {
-    &:hover {
-      color: #f00;
-    }
+  :hover {
+    color: #0f9;
   }
 `;
 
 export const List = styled.ul`
-  padding: 0;
+  margin: 0;
+  padding: 1em;
   list-style: none;
+`;
+
+export const Task = styled.li`
+  padding: 0.5em;
+  font-size: 1, 5em;
+  word-wrap: break-word;
+  border-bottom: 0.1em solid #aaa;
+  > button {
+    margin-right: 0.5em;
+    :hover {
+      color: red;
+    }
+  }
 `;
