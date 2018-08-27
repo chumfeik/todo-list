@@ -11,6 +11,25 @@ injectGlobal`
     background-color: #ef5;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
+
+  .example-enter {
+    opacity: 0.01;
+  }
+
+  .example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+
+  .example-leave {
+    opacity: 1;
+  }
+
+  .example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms linear;
+  }
+
 `;
 export const Wrapper = styled.div`
   max-width: 25rem;
@@ -68,11 +87,13 @@ export const Button = styled.button`
   background-color: #fff;
   font-size: 2em;
   border: none;
+  transition: transform .7s ease-in-out;
   :focus {
     outline: none;
   }
   :hover {
     color: #0f9;
+    transform:rotate(360deg);
   }
 `;
 

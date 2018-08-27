@@ -33,7 +33,6 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        
         <Form onSubmit={this.handleSubmit}>
           <Label>TODO</Label>
           <TaskName
