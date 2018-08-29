@@ -12,22 +12,23 @@ injectGlobal`
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
-  .example-enter {
+  .task-enter {
     opacity: 0.01;
   }
 
-  .example-enter.example-enter-active {
+  .task-enter.task-enter-active {
     opacity: 1;
-    transition: opacity 500ms ease-in;
+    transition: 400ms ease-in;
   }
 
-  .example-leave {
+  .task-leave {
     opacity: 1;
   }
 
-  .example-leave.example-leave-active {
+  .task-leave.task-leave-active {
     opacity: 0.01;
-    transition: opacity 300ms linear;
+    transition: 400ms linear;
+    transform : translate(-100%, -500%);
   }
 
 `;
@@ -87,13 +88,13 @@ export const Button = styled.button`
   background-color: #fff;
   font-size: 2em;
   border: none;
-  transition: transform .7s ease-in-out;
+  transition: transform .4s ease-in-out;
   :focus {
     outline: none;
   }
   :hover {
     color: #0f9;
-    transform:rotate(360deg);
+    transform:rotate(180deg);
   }
 `;
 
@@ -105,6 +106,7 @@ export const List = styled.ul`
 
 export const Task = styled.li`
   padding: 0.5em;
+  background-color: #fff;
   font-size: 1, 5em;
   word-wrap: break-word;
   border-bottom: 0.1em solid #aaa;

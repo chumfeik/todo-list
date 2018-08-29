@@ -7,9 +7,9 @@ class TaskList extends Component {
     return (
       <List>
         <ReactCSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
+          transitionName="task"
+          transitionEnterTimeout={400}
+          transitionLeaveTimeout={400}
         >
           {this.props.tasks.map(task => (
             <Task key={task.id}>
