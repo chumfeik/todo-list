@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TaskList from "./TaskList";
-import { Wrapper, Form, Label, TaskName, Button } from "../style.js";
+import { Wrapper, Form, Label, TodoInput, Button } from "../style.js";
 
 class App extends Component {
   state = { tasks: [], text: "" };
@@ -9,33 +9,56 @@ class App extends Component {
     this.setState({ text: event.target.value });
   };
 
-  handleSubmit = event => {
+  addTaks = event => {
     event.preventDefault();
-    if (!this.state.text.length) {
+    if (this.state.text.trim() == "") {
+      this.setState({ text: "" });
       return;
     }
     const newTask = {
       text: this.state.text,
       id: Date.now()
     };
-    this.setState(prevState => ({
-      tasks: prevState.tasks.concat(newTask),
-      text: ""
-    }));
+    this.setState(
+      prevState => ({
+        tasks: prevState.tasks.concat(newTask),
+        text: ""
+      }),
+      () => {
+        this.updateLocalStorage();
+      }
+    );
   };
 
   deleteTask = id => {
-    this.setState(prevState => ({
-      tasks: prevState.tasks.filter(task => task !== id)
-    }));
+    this.setState(
+      prevState => ({
+        tasks: prevState.tasks.filter(task => task !== id)
+      }),
+      () => {
+        this.updateLocalStorage();
+      }
+    );
   };
+
+  updateLocalStorage() {
+    localStorage.setItem("localTasks", JSON.stringify(this.state.tasks));
+  }
+
+  componentDidMount() {
+    const localTasks = JSON.parse(localStorage.getItem("localTasks"));
+
+    this.setState({
+      tasks: localTasks || []
+    });
+  }
 
   render() {
     return (
       <Wrapper>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.addTaks}>
           <Label>TODO</Label>
-          <TaskName
+          <TodoInput
             onChange={this.handleChange}
             value={this.state.text}
             autoFocus
