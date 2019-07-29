@@ -7,6 +7,7 @@ const App = ({ addTask, deleteTask }) => {
     e.preventDefault();
     input.value.trim() && addTask(input.value);
     input.value = '';
+    input.focus();
   };
 
   let input;
@@ -14,7 +15,7 @@ const App = ({ addTask, deleteTask }) => {
     <Wrapper>
       <Form onSubmit={e => handleClick(e, input)}>
         <Label>TODO</Label>
-        <TodoInput innerRef={node => (input = node)} />
+        <TodoInput innerRef={node => (input = node)} autoFocus />
         <Button>+</Button>
       </Form>
       <TaskList deleteTask={deleteTask} />
