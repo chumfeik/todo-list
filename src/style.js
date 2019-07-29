@@ -1,4 +1,4 @@
-import styled, { injectGlobal } from "styled-components";
+import styled, { injectGlobal } from 'styled-components';
 
 injectGlobal`
   * {
