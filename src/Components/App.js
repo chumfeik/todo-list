@@ -1,33 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TaskList from './TaskList';
 import { Wrapper, Form, Label, TodoInput, Button } from '../style.js';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.addTask = this.props.addTask;
-    this.deleteTask = this.props.deleteTask;
-  }
-
-  handleClick(e, input) {
+const App = ({ addTask, deleteTask }) => {
+  const handleClick = (e, input) => {
     e.preventDefault();
-    input.value.trim() && this.addTask(input.value);
+    input.value.trim() && addTask(input.value);
     input.value = '';
-  }
+  };
 
-  render() {
-    let input;
-    return (
-      <Wrapper>
-        <Form onSubmit={e => this.handleClick(e, input)}>
-          <Label>TODO</Label>
-          <TodoInput innerRef={node => (input = node)} />
-          <Button>+</Button>
-        </Form>
-        <TaskList deleteTask={this.deleteTask} />
-      </Wrapper>
-    );
-  }
-}
+  let input;
+  return (
+    <Wrapper>
+      <Form onSubmit={e => handleClick(e, input)}>
+        <Label>TODO</Label>
+        <TodoInput innerRef={node => (input = node)} />
+        <Button>+</Button>
+      </Form>
+      <TaskList deleteTask={deleteTask} />
+    </Wrapper>
+  );
+};
 
 export default App;
