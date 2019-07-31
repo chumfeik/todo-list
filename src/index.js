@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import App from './Components/App';
 import store from './reducers';
 import { addTask, deleteTask } from './actions';
@@ -11,9 +11,11 @@ const deleteTaskDispatch = id => store.dispatch(deleteTask(id));
 
 const rerender = () =>
   render(
-    <Provider store={store}>
-      <App addTask={addTaskDispatch} deleteTask={deleteTaskDispatch} />
-    </Provider>,
+    <App
+      store={store}
+      addTask={addTaskDispatch}
+      deleteTask={deleteTaskDispatch}
+    />,
     document.getElementById('root')
   );
 store.subscribe(rerender);

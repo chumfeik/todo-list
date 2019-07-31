@@ -2,7 +2,7 @@ import React from 'react';
 import TaskList from './TaskList';
 import { Wrapper, Form, Label, TodoInput, Button } from '../style.js';
 
-const App = ({ addTask, deleteTask }) => {
+const App = ({ store, addTask, deleteTask }) => {
   const handleClick = (e, input) => {
     e.preventDefault();
     input.value.trim() && addTask(input.value);
@@ -18,7 +18,7 @@ const App = ({ addTask, deleteTask }) => {
         <TodoInput innerRef={node => (input = node)} autoFocus />
         <Button>+</Button>
       </Form>
-      <TaskList deleteTask={deleteTask} />
+      <TaskList store={store} deleteTask={deleteTask} />
     </Wrapper>
   );
 };
