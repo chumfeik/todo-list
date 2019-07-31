@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Task from './Task';
+import { Context } from '../index';
 import { List } from '../style.js';
 
-const TaskList = ({ store, deleteTask }) => (
-  <List>
-    {store.getState().map(todo => (
-      <Task key={todo.id} todo={todo} deleteTask={deleteTask} />
-    ))}
-  </List>
-);
+const TaskList = () => {
+  const state = useContext(Context);
+
+  return (
+    <List>
+      {state.store.getState().map(todo => (
+        <Task key={todo.id} todo={todo} />
+      ))}
+    </List>
+  );
+};
 
 export default TaskList;

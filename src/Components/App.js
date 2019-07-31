@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TaskList from './TaskList';
+import { Context } from '../index';
 import { Wrapper, Form, Label, TodoInput, Button } from '../style.js';
 
-const App = ({ store, addTask, deleteTask }) => {
+const App = () => {
+  const state = useContext(Context);
+
   const handleClick = (e, input) => {
     e.preventDefault();
-    input.value.trim() && addTask(input.value);
+    input.value.trim() && state.addTask(input.value);
     input.value = '';
     input.focus();
   };
@@ -18,7 +21,7 @@ const App = ({ store, addTask, deleteTask }) => {
         <TodoInput innerRef={node => (input = node)} autoFocus />
         <Button>+</Button>
       </Form>
-      <TaskList store={store} deleteTask={deleteTask} />
+      <TaskList />
     </Wrapper>
   );
 };
