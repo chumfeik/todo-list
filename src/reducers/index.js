@@ -1,11 +1,7 @@
 import { createStore } from 'redux';
 
 const todo = (
-  state = [
-    // { id: 0, text: 'milk' },
-    // { id: 1, text: 'sugar' },
-    // { id: 2, text: 'bread' }
-  ],
+  state = [],
   action
 ) => {
   switch (action.type) {

@@ -6,12 +6,9 @@ import store from './reducers';
 
 export const Context = React.createContext();
 
-const rerender = () =>
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
-  );
-store.subscribe(rerender);
-rerender();
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
