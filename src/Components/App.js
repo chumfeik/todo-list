@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import TaskList from './TaskList';
-import { Context } from '../index';
+import { addTask } from '../actions';
 import { Wrapper, Form, Label, TodoInput, Button } from '../style.js';
 
 const App = () => {
-  const state = useContext(Context);
+  const dispatch = useDispatch();
 
   const handleClick = (e, input) => {
     e.preventDefault();
-    input.value.trim() && state.addTask(input.value);
+    input.value.trim() && dispatch(addTask(input.value));
     input.value = '';
     input.focus();
   };

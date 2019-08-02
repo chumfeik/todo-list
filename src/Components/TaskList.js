@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Task from './Task';
-import { Context } from '../index';
 import { List } from '../style.js';
 
 const TaskList = () => {
-  const state = useContext(Context);
+  const todos = useSelector(state => state);
 
   return (
     <List>
-      {state.store.getState().map(todo => (
+      {todos.map(todo => (
         <Task key={todo.id} todo={todo} />
       ))}
     </List>

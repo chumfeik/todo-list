@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
-import { Context } from '../index';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from '../actions';
 import { Task as ListItem, Button } from '../style.js';
 
 const Task = ({ todo }) => {
-  const state = useContext(Context);
+  const dispatch = useDispatch();
 
   return (
     <ListItem>
-      <Button onClick={() => state.deleteTask(todo.id)}>&times;</Button>
+      <Button onClick={() => dispatch(deleteTask(todo.id))}>&times;</Button>
       {todo.text}
     </ListItem>
   );
